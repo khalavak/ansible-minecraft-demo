@@ -1,0 +1,63 @@
+# tasks file for nginx
+---
+
+- name: Install nginx-naxsi
+  apt: pkg=nginx-naxsi state=latest update_cache=true
+  notify:
+    - Start nginx
+  tags: 
+  - nginx-naxsi
+  - install
+
+
+- name: Disabled the default site
+  file: path=/etc/nginx/sites-enabled/default state=absent
+  notify:
+    - Restart nginx
+  tags: 
+    - nginx-naxsi
+    - configure
+
+
+- name: Confgure the no-default site
+  template: 
+    src=etc/nginx/sites-available/no-default.j2 
+    dest=/etc/nginx/sites-available/no-default 
+    group=root owner=root
+  notify:
+    - Restart nginx
+  tags: 
+    - nginx-naxsi
+    - configure
+
+
+- name: Enable the no-default site
+  file: 
+    src=/etc/nginx/sites-available/no-default 
+    dest=/etc/nginx/sites-enabled/no-default state=link
+  notify:
+    - Restart nginx
+  tags: 
+    - nginx-naxsi
+    - configure
+
+
+- name: Allow http(tcp/80) through ufw
+  ufw: rule=allow port=80 proto=tcp
+  tags: 
+    - nginx-naxsi
+    - configure
+
+
+- name: Allow https(tcp/443) through ufw
+  ufw: rule=allow port=443 proto=tcp
+  tags: 
+    - nginx-naxsi
+    - configure
+
+
+- name: Make sure nginx is running and enabled to start at boot           
+  service: name=nginx state=running enabled=yes                           
+  tags:                                                                        
+    - nginx- naxsi
+    - configure

@@ -1,0 +1,5 @@
+---
+# vars file for ansible
+
+ansible_repo: https://khalavak@bitbucket.org/deductivelabs/deductive-infrastructure.git
+ansible_root: /etc/ansible/

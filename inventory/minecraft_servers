@@ -1,0 +1,14 @@
+; inventory/minecraft_servers
+
+[localhost]                                                                    
+127.0.0.1 ansible_python_interpreter=/usr/local/bin/python     
+
+[local]                                                                        
+localhost 
+
+[minecraft-instances]
+# EC2 Instances
+ec2-54-93-127-128.eu-central-1.compute.amazonaws.com ansible_ssh_private_key_file=~/.ssh/crosskey_ec2_deploy.pem
+ec2-54-93-160-254.eu-central-1.compute.amazonaws.com ansible_ssh_private_key_file=~/.ssh/crosskey_ec2_deploy.pem
+ec2-54-93-129-250.eu-central-1.compute.amazonaws.com ansible_ssh_private_key_file=~/.ssh/crosskey_ec2_deploy.pem
+ec2-54-93-126-23.eu-central-1.compute.amazonaws.com ansible_ssh_private_key_file=~/.ssh/crosskey_ec2_deploy.pem

@@ -1,0 +1,51 @@
+---
+# file: group_vars/all
+# These variables will be included in all groups
+
+remote_backup_dir: /var/backup/
+local_backup_dir: /var/backup/
+
+folders:
+    - /etc
+    - /srv/sites/ 
+
+# NOTE! These should be stored encrypted with ansible-vault when running
+# in full production. Running with unencrypted variables during testing...
+#
+#
+#
+admin_email: enderman@crosskey.fi
+root_password: SuperSecureSecretPassword1
+deploy_password: SuperSecureSecretPassword1
+
+# AWS  Access Key ID:
+aws_access_key: AKIAIG6L33HMBIEX5YHA
+# AWS Secret Access Key:
+aws_secret_key: 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
+
+# # EC2 SSH Key for production EC2 instanses
+ec2_deploy_key_file: "~/.ssh/crosskey_ec2_deploy.pem"
+ec2_deploy_key: |
+    -----BEGIN RSA PRIVATE KEY-----
+    MIIEogIBAAKCAQEAi3Cbpv2wflQ+Oie4ZvXuQeylm8NyzEcy5xcyFgfXeuPuwwGxP7nBWvhZNVHh
+    QZAyjvftvRj+gdjSFfv8PbKXtbBWVBMFF5Cuh1XLVQGo0SAnqXHG3xORwSy9LWBqwePhB9Xk3zHe
+    nmhFjuQSfWzWjY6l3kKrsPjiRtPjneAA1kxVc7tx9d0GLlTFLU5MAAcRo5djp9VMbaTGg64QiUGf
+    MNzxJqwItJL+K3zQmhfk6Ci8dfkJ8pSwtuEEgSYvwmAHittxWoOtqXFiesUzDa6rc0wTZMKTel3G
+    3xzHjapt7iuezClFRwWi5cNA8Df6UE4ClaAI5Shd3OQ9W7mbVNJb9QIDAQABAoIBAADlT0qqVIjr
+    N58eBDQ9HjO0NngisEkZp/0ODBdSI5M5hZ4hE6dqJRDViZUrGnxWVczPUOqnD3N8FhVoEf2/ePQE
+    1vkhSiYVmtlptq2sHg6B219eSL3EHWqVQ/3XobfvI9HuENNSObDg0JmTY38ExPgR04Ty/rFbV/DG
+    ia7I8pht0KRJKxznd/rZAFj4oVEq5bk/7YQF2+L8rPLKGoOf0+LA//kyv9hFKgt+3Vu4Zavgfbqe
+    91BW/8sdKLgzH4XrJvTM86jN0CR48TxMjhwmQJaWpEKyUkDZbDn1rYDqAw+6NRPv+s4Cwtwuaktb
+    VXKZr3IG/gR47olQNm8UL1Kxjr0CgYEA3/V9xvA8kz91iUnlOJTUcYII3/SG9uBP3oHvyPa493uJ
+    5Wxi/7F12+edpS9ltY1GZqgTUI8h91ECP+PlFHCSwR72auUqRT31GlNf9tM5ACxdfkJv6qAXP/ei
+    ISiRU+9OczlaJlW4OBXWPEa/1QrKzaf++qE/STj1U5nc71D89hMCgYEAn2OZ2mhjtjy3lx3MoAHe
+    xvVhDSfUKnjsW0Iq8Mhx2Jva0AQH8eS0Wmo8S0oCNnw6vu7rPIv/t4FDM6yNSOZerm5iAlmy0+Av
+    O9h5DZYPEFCFeixObvtO/nZvbESOeZ87ilhmFJxvjEqW/YD0T+B9tMyG4ZfbFuxyaUanhmNfxtcC
+    gYB2Q/0XgOV8HJbE2PDi4DUPe8uT+F0NIYcLyTIGvcMPbX10Wbgtrli+t6DYCh97sA7tRvRsJimZ
+    oH2/n2jpUkktElyuNjYMOpukO0MB5KjFHqiAdDUFgWTFss87E2ErIcQbtL2WYM3XUDDBw9qpdfmC
+    gKR1VZFF6X4jl6zD89ChYQKBgD94GP7ozLP3z5+kZSReOkj900y6zHixOGVKnvDM0NDRlzt4L3W6
+    fbr3TNUqPmFV7Mq1NwUgNo7rMUh1cLlTyuYo3GxVLanDPuvU0rd/RrZXah9xXzZAan9XyBzT2+xA
+    ZSQ8+UFB3gV+ekuuOxtHqKcDPr68iqjBNPoJAZK5JZ13AoGAGL1/oljtq13ocNvcWdrbarrq1MTu
+    dXtEStrNM4Zm6RgXflaPynuxYkmoZghl/fBrqyhoC/o72n+h9aS9zbeHYt4eCO4a4VswJi2FoK/6
+    UlgcYA4hw2zPnHIxgYiiD7wCLzWsfyyJNEFnfe3jz9UsZ1LicspTSZmEeiu0aC5CryU=
+    -----END RSA PRIVATE KEY-----

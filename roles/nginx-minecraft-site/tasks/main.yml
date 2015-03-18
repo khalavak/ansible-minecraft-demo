@@ -1,0 +1,35 @@
+# tasks file for nginx-minecraft website
+---
+
+- name: Create the website root
+  file: dest=/srv/sites/minecraft mode=775 state=directory owner=www-data group=www-data
+  tags:
+    - nginx
+    - minecraft-site
+
+- name: Copy index.html to website root
+  template: src=index.html.j2 dest=/srv/sites/minecraft/index.html owner=www-data group=www-data mode=0644
+
+- name: Copy pictures to website root
+  copy: src=minecraft-bg-2.jpg  dest=/srv/sites/minecraft/minecraft-bg-2.jpg  owner=www-data group=www-data mode=0644
+
+
+- name: Confgure the minecraft website
+  template: 
+    src=etc/nginx/sites-available/minecraft.j2 
+    dest=/etc/nginx/sites-available/minecraft
+    group=root owner=root
+  tags: 
+    - nginx
+    - minecraft-site
+
+- name: Enable the Minecraft site
+  file: 
+    src=/etc/nginx/sites-available/minecraft
+    dest=/etc/nginx/sites-enabled/minecraft state=link
+  notify:
+    - Restart nginx
+  tags: 
+    - nginx
+    - minecraft-site
+

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <body style="background-image:url(minecraft-bg-2.jpg)">
+        
+        <h1>Crosskey Minecraft Server: {{ ansible_hostname }}.{{ ansible_fqdn }}  / {{ ansible_date_time.iso8601 }}</h1>
+        <table>
+        <tr>
+        <td><b>Architecture:<b></td>
+        <td>{{ ansible_architecture }}</td>
+        </tr>
+        <tr>
+        <td><b>Distribution</b></td>
+        <td>Family: {{ ansible_os_family}} / {{ ansible_distribution }} / {{ ansible_distribution_release }} / {{ ansible_distribution_version }} </td>
+        </tr>
+        </table>
+
+    <body>
+</html>
+

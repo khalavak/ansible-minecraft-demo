@@ -1,0 +1,42 @@
+---
+# file: deploy.yml
+# This playbook deploys the systems and applications in the environment.
+# For continuous, regular updates to the systems and applications use
+# the deploy.yml playbook!
+#
+# The difference between provisioning and deployment is that provisioning 
+# is done once, deployment is done every time you need to push something
+# to production or staging
+
+- name: Update EC2 instances
+  hosts: ec2
+  sudo: yes
+  remote_user: ubuntu
+  roles:
+    - update
+
+- name: Install base applications
+  hosts: ec2
+  sudo: yes
+  remote_user: ubuntu
+  roles:
+    - base
+    - users
+
+- name: Deploy Minecraft on the EC2 instances
+  hosts: tag_Name_Minecraft
+  sudo: yes
+  remote_user: ubuntu
+  gather_facts: True
+  roles:
+    - minecraft
+
+- name: Deploy Webserver on the EC2 instances
+  hosts: tag_Name_Webserver
+  sudo: yes
+  remote_user: ubuntu
+  gather_facts: True
+  roles:
+    - nginx-base
+    - nginx-minecraft-site
+

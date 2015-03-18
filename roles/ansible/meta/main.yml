@@ -1,0 +1,18 @@
+---
+galaxy_info:
+  author: Kim Halavakoski
+  description: Ansible role for deploying ansible on a server
+  company: Deductive Labs Ab Ltd.
+  license: license (GPLv2, CC-BY, etc)
+  min_ansible_version: 1.8
+  platforms:
+    - name: Ubuntu
+      versions:
+        - all
+    
+  categories:
+    - system
+
+dependencies:
+  - [] 
+

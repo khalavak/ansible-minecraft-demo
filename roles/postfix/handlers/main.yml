@@ -1,0 +1,14 @@
+---
+# handlers file for postfix
+- name: stop postfix
+  service: name=postfix state=stopped
+
+- name: start postfix
+  service: name=postfix state=started
+
+- name: reload postfix
+  service: name=postfix state=reloaded
+
+- name: restart postfix
+  service: name=postfix state=restarted
+ 

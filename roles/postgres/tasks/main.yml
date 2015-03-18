@@ -1,0 +1,44 @@
+---
+# Tasks to install and configure barebone postgres database
+- name: Install postgresql
+  apt: pkg={{ item }} state=installed
+  with_items:
+    - postgresql
+    - libpq-dev
+    - python-psycopg2
+  tags: 
+    - postgresql
+    - install
+
+- name: Configure postgres postgresql.conf
+  template: 
+    src=etc/postgresql/9.3/main/postgresql.conf.j2 
+    dest=/etc/postgresql/9.3/main/postgresql.conf.ansible
+  tags: 
+    - postgresql
+    - config
+
+- name: Configure postgres pg_hba.conf
+  template: 
+    src=etc/postgresql/9.3/main/pg_hba.conf.j2 
+    dest=/etc/postgresql/9.3/main/pg_hba.conf.ansible
+  notify: 
+    - restart postgresql
+  tags:
+    - postgresql
+    - config
+
+- name: Create postgres user
+  postgresql_user: 
+    name={{ postgres_username }} password={{ postgres_password }} 
+    role_attr_flags=CREATEDB
+  sudo_user: postgres
+  tags:
+    - postgresql
+    - config
+
+- name: Make sure postgresql is running and enabled to start at boot
+  service: name=postgresql state=running enabled=yes
+  tags: 
+    - postgresql
+

@@ -1,0 +1,22 @@
+---
+
+- name: Install Ansible
+  apt: pkg={{ item }} state=installed
+  with_items:
+    - ansible
+    - ansible-doc
+  tags:
+    - ansible
+    - install
+
+- name: Install Ansible config files 
+  template:
+    src=etc/ansible/{{ item }}.j2 dest=/etc/ansible/{{ item }}
+  with_items:
+    - ansible.cfg
+  tags: 
+    - ansible
+    - config
+
+- name: Clone Ansible configurations from the Bitbucket repo
+  git: repo={{ ansible_repo }} dest={{ ansible_root }}
