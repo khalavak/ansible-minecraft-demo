@@ -5,7 +5,11 @@
     "description": "Hotmodell(Threat model) för ett potentiellt e-val system"
   },
   "detail": {
-    "contributors": [],
+    "contributors": [
+      {
+        "name": "Kim Halavakoski"
+      }
+    ],
     "diagrams": [
       {
         "title": "e-val system",
