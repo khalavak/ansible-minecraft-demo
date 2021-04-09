@@ -1,0 +1,11 @@
+{
+  "summary": {
+    "title": "E-val Threat Model",
+    "owner": "Kim Halavakoski",
+    "description": "Hotmodell(Threat model) för ett potentiellt e-val system"
+  },
+  "detail": {
+    "contributors": [],
+    "diagrams": []
+  }
+}
